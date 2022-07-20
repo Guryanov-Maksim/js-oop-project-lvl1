@@ -1,8 +1,11 @@
 env:
   node: true
+  jest/globals: true
 extends:
   - airbnb-base
 parserOptions:
   ecmaVersion: latest
+plugins:
+  - jest
 rules:
   import/extensions: 0
