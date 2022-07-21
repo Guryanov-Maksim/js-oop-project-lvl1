@@ -31,6 +31,18 @@ const typeMapping = {
     }
     return false;
   },
+  array: (value, required) => {
+    if (Array.isArray(value)) {
+      return true;
+    }
+    if (required && !Array.isArray(value)) {
+      return false;
+    }
+    if (_.isNull(value)) {
+      return true;
+    }
+    return false;
+  },
 };
 
 class Schema {
