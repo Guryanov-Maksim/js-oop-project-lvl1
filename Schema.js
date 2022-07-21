@@ -43,6 +43,12 @@ const typeMapping = {
     }
     return false;
   },
+  object: (value) => {
+    if (_.isUndefined(value)) {
+      return false;
+    }
+    return true;
+  },
 };
 
 class Schema {
