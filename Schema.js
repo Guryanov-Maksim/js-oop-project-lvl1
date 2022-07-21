@@ -1,10 +1,28 @@
+import _ from 'lodash';
+
+const typeMapping = {
+  number: (value, required) => {
+    if (required) {
+      if (_.isNumber(value)) {
+        return true;
+      }
+      return false;
+    }
+    if (_.isNull(value) || _.isNumber(value)) {
+      return true;
+    }
+    return false;
+  },
+};
+
 class Schema {
   addCheck(check) {
     this.checks.push(check);
   }
 
   isValid(value) {
-    if (this.requiredValue && !value) {
+    const requeriedCheck = typeMapping[this.type];
+    if (!requeriedCheck(value, this.requiredValue)) {
       return false;
     }
     const failedChecksCount = this.checks
