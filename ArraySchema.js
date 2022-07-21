@@ -14,7 +14,7 @@ class NumberSchema extends Schema {
     return this;
   }
 
-  sizeOf(size) {
+  sizeof(size) {
     const check = (value) => {
       if (!Array.isArray(value)) {
         return false;

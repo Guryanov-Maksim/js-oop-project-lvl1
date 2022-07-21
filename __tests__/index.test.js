@@ -145,11 +145,11 @@ test('array, required', () => {
   expect(schema.isValid([5])).toBe(true);
 });
 
-test('array, sizeOf', () => {
+test('array, sizeof', () => {
   const v = new Validator();
   const schema = v.array();
 
-  schema.sizeOf(2);
+  schema.sizeof(2);
   expect(schema.isValid(null)).toBe(false);
   expect(schema.isValid([])).toBe(false);
   expect(schema.isValid([5])).toBe(false);
@@ -161,7 +161,7 @@ test('array, several checks', () => {
   const v = new Validator();
   const schema = v.array();
 
-  schema.required().sizeOf(3);
+  schema.required().sizeof(3);
   expect(schema.isValid(null)).toBe(false);
   expect(schema.isValid([])).toBe(false);
   expect(schema.isValid([5])).toBe(false);
