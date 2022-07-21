@@ -17,6 +17,9 @@ class NumberSchema extends Schema {
 
   positive() {
     const check = (number) => {
+      if (_.isNull(number)) {
+        return true;
+      }
       if (!_.isNumber(number)) {
         return false;
       }
