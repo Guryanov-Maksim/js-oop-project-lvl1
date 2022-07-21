@@ -67,6 +67,11 @@ class Schema {
       .length;
     return failedChecksCount === 0;
   }
+
+  test(validatorName, ...targetValue) {
+    this.addCheck((value) => this.customValidators[validatorName](value, ...targetValue));
+    return this;
+  }
 }
 
 export default Schema;

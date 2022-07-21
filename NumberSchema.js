@@ -3,11 +3,12 @@ import _ from 'lodash';
 import Schema from './Schema.js';
 
 class NumberSchema extends Schema {
-  constructor() {
+  constructor(customValidators) {
     super();
     this.checks = [];
     this.requiredValue = false;
     this.type = 'number';
+    this.customValidators = customValidators;
   }
 
   required() {

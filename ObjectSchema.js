@@ -3,11 +3,12 @@ import _ from 'lodash';
 import Schema from './Schema.js';
 
 class ObjectSchema extends Schema {
-  constructor() {
+  constructor(customValidators) {
     super();
     this.checks = [];
     this.requiredValue = false;
     this.type = 'object';
+    this.customValidators = customValidators;
   }
 
   shape(objectShape) {

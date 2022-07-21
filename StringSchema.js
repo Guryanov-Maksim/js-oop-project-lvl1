@@ -1,11 +1,12 @@
 import Schema from './Schema.js';
 
 class StringSchema extends Schema {
-  constructor() {
+  constructor(customValidators) {
     super();
     this.checks = [];
     this.requiredValue = false;
     this.type = 'string';
+    this.customValidators = customValidators;
   }
 
   required() {

@@ -1,11 +1,12 @@
 import Schema from './Schema.js';
 
 class NumberSchema extends Schema {
-  constructor() {
+  constructor(customValidators) {
     super();
     this.checks = [];
     this.requiredValue = false;
     this.type = 'array';
+    this.customValidators = customValidators;
   }
 
   required() {
