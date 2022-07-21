@@ -130,3 +130,42 @@ test('number, several checks', () => {
   expect(schema.isValid(10)).toBe(true);
   expect(schema.isValid(11)).toBe(false);
 });
+
+test('array, required', () => {
+  const v = new Validator();
+  const schema = v.array();
+
+  expect(schema.isValid('')).toBe(false);
+  expect(schema.isValid(null)).toBe(true);
+  expect(schema.isValid()).toBe(false);
+
+  schema.required();
+  expect(schema.isValid(null)).toBe(false);
+  expect(schema.isValid([])).toBe(true);
+  expect(schema.isValid([5])).toBe(true);
+});
+
+test('array, sizeOf', () => {
+  const v = new Validator();
+  const schema = v.array();
+
+  schema.sizeOf(2);
+  expect(schema.isValid(null)).toBe(false);
+  expect(schema.isValid([])).toBe(false);
+  expect(schema.isValid([5])).toBe(false);
+  expect(schema.isValid([1, 2])).toBe(true);
+  expect(schema.isValid([1, 2, 3])).toBe(false);
+});
+
+test('array, several checks', () => {
+  const v = new Validator();
+  const schema = v.array();
+
+  schema.required().sizeOf(3);
+  expect(schema.isValid(null)).toBe(false);
+  expect(schema.isValid([])).toBe(false);
+  expect(schema.isValid([5])).toBe(false);
+  expect(schema.isValid([1, 2])).toBe(false);
+  expect(schema.isValid([1, 2, 3])).toBe(true);
+  expect(schema.isValid([1, 2, 3, 4])).toBe(false);
+});
