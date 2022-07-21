@@ -82,7 +82,7 @@ test('number, positive', () => {
   schema.positive();
   expect(schema.isValid(null)).toBe(true);
   expect(schema.isValid(-1)).toBe(false);
-  expect(schema.isValid(0)).toBe(true);
+  expect(schema.isValid(0)).toBe(false);
   expect(schema.isValid(1)).toBe(true);
 });
 

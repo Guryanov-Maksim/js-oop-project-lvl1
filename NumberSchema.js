@@ -24,7 +24,7 @@ class NumberSchema extends Schema {
       if (!_.isNumber(number)) {
         return false;
       }
-      return number >= 0;
+      return number > 0;
     };
     this.addCheck(check);
     return this;
