@@ -5,6 +5,7 @@ class StringSchema extends Schema {
     super();
     this.checks = [];
     this.requiredValue = false;
+    this.type = 'string';
   }
 
   required() {
