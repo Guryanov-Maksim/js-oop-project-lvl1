@@ -186,3 +186,19 @@ test('object, shape', () => {
   expect(schema.isValid({ name: 'ada', surname: 'petrov' })).toBe(false);
   expect(schema.isValid()).toBe(false);
 });
+
+test('custom validators', () => {
+  const v = new Validator();
+
+  const newStringValidator = (value, start) => value.startsWith(start);
+  v.addValidator('string', 'startWith', newStringValidator);
+  const schema = v.string().test('startWith', 'H');
+  expect(schema.isValid('exlet')).toBe(false);
+  expect(schema.isValid('Hexlet')).toBe(true);
+
+  const newNumberValidator = (value, min) => value >= min;
+  v.addValidator('number', 'min', newNumberValidator);
+  const schema2 = v.number().test('min', 5);
+  expect(schema2.isValid(4)).toBe(false);
+  expect(schema2.isValid(6)).toBe(true);
+});
