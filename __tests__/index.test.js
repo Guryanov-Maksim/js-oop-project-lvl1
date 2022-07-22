@@ -1,4 +1,4 @@
-import Validator from '../index.js';
+import Validator from '../src/index.js';
 
 test('string, required', () => {
   const v = new Validator();
