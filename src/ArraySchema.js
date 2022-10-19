@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import Schema from './Schema.js';
 
+// test comment
+
 class ArraySchema extends Schema {
   constructor(validators) {
     super(validators);
